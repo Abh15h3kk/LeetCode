@@ -141,6 +141,24 @@ def deleteBT(rootNode):
     rootNode.rightChild = None
     return 'BT successfully deleted'
 
+
+def inOrderTraversall(rootNode):
+        if rootNode==None:
+            return []
+
+        left_list = inOrderTraversall(rootNode.leftChild)
+        right_list = inOrderTraversall(rootNode.rightChild)
+        return left_list + [rootNode.data] + right_list 
+
+def iot(root,arr):
+    if root is None:
+        return None
+    iot(root.leftChild,arr)
+    arr.append(root.data)
+    iot(root.rightChild,arr)
+    return arr
+
+
 BT = TreeNode('Drinks')
 leftChild = TreeNode('Hot')
 rightChild = TreeNode('Cold')
@@ -151,6 +169,8 @@ Coffee = TreeNode('Coffee')
 leftChild.leftChild = Tea
 leftChild.rightChild = Coffee
 Coca = TreeNode('Coca')
+print(inOrderTraversall(BT))
 
-deleteNodeBT(BT,'Hot')
-levelOrderTraversal(BT)
+print(iot(BT,arr=[]))
+
+
